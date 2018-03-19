@@ -1,0 +1,8 @@
+&handy_param
+society = 'egalitarian'
+config = 'oscillatory_landing'
+scheme = 'rk'
+nt = 4000,
+dtrat = 1,
+lpos = 3,
+/
