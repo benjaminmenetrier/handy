@@ -110,7 +110,7 @@ Cette étude explore l'impact de ce choix de schéma numérique sur le comportem
 Une implémentation en FORTRAN du modèle HANDY a été réalisée avec les caractéristiques décrites dans l'article. Elle est disponible librement\footnote{\url{https://github.com/benjaminmenetrier/handy}}. \textbf{Première surprise} avec le type de société "egalitarian" dans la configuration "irreversible type-N collapse" (figure 3.d de l'article): l'intégration diverge après 323 pas de temps, puisque la variable $y$ (ressources naturelles) devient négative (figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp}). Il semble que les auteurs aient ajouté un test de positivité, pour forcer les valeurs négatives à zéro.
 
 \begin{center}
-\includegraphics[width=0.7\linewidth]{../ncl/egalitarian-collapse-fe-01-lpos1-sp.pdf}
+\includegraphics[width=0.65\linewidth]{../ncl/egalitarian-collapse-fe-01-lpos1-sp.pdf}
 \captionof{figure}{Prolétaires (bleu, unité $\chi_M$), ressources naturelles (vert, unité $\lambda$) et richesses accumulées (gris, unité 10 $\lambda$), pour une société "egalitarian" dans la configuration "irreversible type-N collapse". La variable "ressources naturelles" devient négative au pas de temps 323, ce qui n'a plus de sens. \label{fig:egalitarian-collapse-fe-01-lpos1-sp}}
 \end{center}
 
@@ -118,7 +118,7 @@ Une implémentation en FORTRAN du modèle HANDY a été réalisée avec les cara
 On peut imposer en sortie du schéma numérique que toute valeur négative soit remise à zéro. Dans ce cas, la variable "ressources naturelles" est forcée à zéro au pas de temps 323 et le reste pour toute l'intégration puisque $\dot{y}$ est proportionnelle à $y$. La figure \ref{fig:egalitarian-collapse-fe-01-lpos2-sp} montre qu'on obtient alors un résultat semblable à la figure 3.d de l'article, c'est-à-dire un effondrement irréversible.
 
 \begin{center}
-\includegraphics[width=0.7\linewidth]{../ncl/egalitarian-collapse-fe-01-lpos2-sp.pdf}
+\includegraphics[width=0.65\linewidth]{../ncl/egalitarian-collapse-fe-01-lpos2-sp.pdf}
 \captionof{figure}{Comme la figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp}, en ajoutant un test de positivité. \label{fig:egalitarian-collapse-fe-01-lpos2-sp}}
 \end{center}
 
@@ -126,7 +126,7 @@ On peut imposer en sortie du schéma numérique que toute valeur négative soit 
 Une autre stratégie pour améliorer la précision du schéma d'intégration Euler explicite est de diminuer le pas de temps. La figure \ref{fig:egalitarian-collapse-fe-02-lpos0-sp} montre qu'en divisant par deux le pas de temps (6 mois au lieu d'un an), le résultat obtenu est semblable à la figure 3.d de l'article, sans qu'un test de positivité ne soit nécessaire.
 
 \begin{center}
-\includegraphics[width=0.7\linewidth]{../ncl/egalitarian-collapse-fe-02-lpos0-sp.pdf}
+\includegraphics[width=0.65\linewidth]{../ncl/egalitarian-collapse-fe-02-lpos0-sp.pdf}
 \captionof{figure}{Comme la figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp} avec un pas de temps de 6 mois au lieu d'un an. \label{fig:egalitarian-collapse-fe-02-lpos0-sp}}
 \end{center}
 
@@ -134,7 +134,7 @@ Une autre stratégie pour améliorer la précision du schéma d'intégration Eul
 Le schéma d'intégration Euler explicite est en général peu utilisé car, outre son instabilité, il est peu précis (schéma d'ordre 1). Un schéma très populaire pour les intégrations peu coûteuses comme le modèle HANDY est celui de Runge-Kutta d'ordre 4\footnote{\url{https://fr.wikipedia.org/wiki/M\%C3\%A9thodes\_de\_Runge-Kutta}}, stable et précis. \textbf{Deuxième surprise} : la figure \ref{fig:egalitarian-collapse-rk-01-lpos0-sp} montre qu'avec ce schéma, la configuration "irreversible type-N collapse" ne présente plus d'effondrement irréversible mais des effondrements réversibles périodiques, comme la configuration "reversible Type-N collapse" (figure 3.c de l'article).
 
 \begin{center}
-\includegraphics[width=0.7\linewidth]{../ncl/egalitarian-collapse-rk-01-lpos0-sp.pdf}
+\includegraphics[width=0.65\linewidth]{../ncl/egalitarian-collapse-rk-01-lpos0-sp.pdf}
 \captionof{figure}{Comme la figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp} avec un schéma de Runge-Kutta d'ordre 4. \label{fig:egalitarian-collapse-rk-01-lpos0-sp}}
 \end{center}
 
@@ -144,17 +144,17 @@ $  $\\
 Dans le cas de la configuration "irreversible type-N collapse", cela permet d'obtenir un résultat semblable à la figure 3.d de l'article en utilisant le schéma numérique Runge-Kutta d'ordre 4 (figure \ref{fig:egalitarian-collapse-rk-01-lpos3-sp}). Par contre, cela modifie fortement les configurations "oscillatory approach to equilibrium" (figure 3.b dans l'article) et "reversible type-N collapse" (figure 3.c dans l'article) en les transformant en effondrements irréversibles (figures \ref{fig:egalitarian-oscillatory_landing-rk-01-lpos3-sp} et \ref{fig:egalitarian-cycles-rk-01-lpos3-sp} respectivement). Cette transformation est logique : un effondrement irréversible de type N est désormais inévitable dès que les ressources naturelles sont quasi-épuisées pendant l'intégration, ce qui est le cas pour les configurations "oscillatory approach to equilibrium" et "reversible type-N collapse" de l'article. On remarque aussi que pour ces deux configurations, les figures de l'articles présentent des augmentations violentes des ressources naturelles lorsque les populations s'effondrent. Les ressources naturelles passent alors en quelques années d'un état quasi-nul à leur valeur maximale. Ces variations brutales n'ont pas beaucoup de sens, et sont éliminées par le mécanisme de dépensation.
 
 \begin{center}
-\includegraphics[width=0.7\linewidth]{../ncl/egalitarian-collapse-rk-01-lpos3-sp.pdf}
+\includegraphics[width=0.65\linewidth]{../ncl/egalitarian-collapse-rk-01-lpos3-sp.pdf}
 \captionof{figure}{Comme la figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp}, avec une dépensation des ressources naturelles. \label{fig:egalitarian-collapse-rk-01-lpos3-sp}}
 \end{center}
 
 \begin{center}
-\includegraphics[width=0.7\linewidth]{../ncl/egalitarian-oscillatory_landing-rk-01-lpos3-sp.pdf}
+\includegraphics[width=0.65\linewidth]{../ncl/egalitarian-oscillatory_landing-rk-01-lpos3-sp.pdf}
 \captionof{figure}{Comme la figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp} pour la configuration "oscillatory approach to equilibrium", avec une dépensation des ressources naturelles. \label{fig:egalitarian-oscillatory_landing-rk-01-lpos3-sp}}
 \end{center}
 
 \begin{center}
-\includegraphics[width=0.7\linewidth]{../ncl/egalitarian-cycles-rk-01-lpos3-sp.pdf}
+\includegraphics[width=0.65\linewidth]{../ncl/egalitarian-cycles-rk-01-lpos3-sp.pdf}
 \captionof{figure}{Comme la figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp} pour la configuration "reversible type-N collapse", avec une dépensation des ressources naturelles. \label{fig:egalitarian-cycles-rk-01-lpos3-sp}}
 \end{center}
 
