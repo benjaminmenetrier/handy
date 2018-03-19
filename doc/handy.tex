@@ -107,7 +107,7 @@ $  $\\
 Cette étude explore l'impact de ce choix de schéma numérique sur le comportement du modèle HANDY, et démontre que les conclusions de l'article seraient radicalement différentes avec un autre choix.
 
 \section{Modèle brut}
-Une implémentation en FORTRAN du modèle HANDY a été réalisée avec les caractéristiques décrites dans l'article. Elle est disponible librement\footnote{\url{github}}. \textbf{Première surprise} avec le type de société "egalitarian" dans la configuration "irreversible type-N collapse" (figure 3.d de l'article): l'intégration diverge après 323 pas de temps, puisque la variable $y$ (ressources naturelles) devient négative (figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp}). Il semble que les auteurs aient ajouté un test de positivité, pour forcer les valeurs négatives à zéro.
+Une implémentation en FORTRAN du modèle HANDY a été réalisée avec les caractéristiques décrites dans l'article. Elle est disponible librement\footnote{\url{https://github.com/benjaminmenetrier/handy}}. \textbf{Première surprise} avec le type de société "egalitarian" dans la configuration "irreversible type-N collapse" (figure 3.d de l'article): l'intégration diverge après 323 pas de temps, puisque la variable $y$ (ressources naturelles) devient négative (figure \ref{fig:egalitarian-collapse-fe-01-lpos1-sp}). Il semble que les auteurs aient ajouté un test de positivité, pour forcer les valeurs négatives à zéro.
 
 \begin{center}
 \includegraphics[width=0.7\linewidth]{../ncl/egalitarian-collapse-fe-01-lpos1-sp.pdf}
